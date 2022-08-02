@@ -1,0 +1,9 @@
+# add Achlys to the PATH
+export PATH=$PATH:/opt/achlys
+alias achlys='achlys-opt'
+
+# add MOOSE Python libraries to PYTHONPATH
+export PYTHONPATH=$PYTHONPATH:/opt/moose/python
+
+# add youQ Python scripts to PATH.
+export PATH=$PATH:/opt/achlys-uq/achlys-uq
