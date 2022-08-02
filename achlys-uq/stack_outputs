@@ -29,11 +29,12 @@ files = glob.glob("*.csv"); files.sort(key=len, reverse=True)
 dfs = []
 
 for f in files:
-    print(f)
+    print('Processing {}...'.format(f))
     dfs.append(pd.read_csv(f))
 
 for i in range(1, len(dfs)):
     dfs[i] = dfs[i].drop(0)
     dfs[i]['time'] += dfs[i-1]['time'].iloc[-1]
-    
-pd.concat(dfs, ignore_index=True).to_csv('ogorodnikova.csv', index=False)
+
+print('Writing {}...'.format(args.outfile))
+pd.concat(dfs, ignore_index=True).to_csv(args.outfile, index=False)
