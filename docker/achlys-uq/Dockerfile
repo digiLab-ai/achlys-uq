@@ -7,4 +7,4 @@ RUN cd /opt/achlys-uq/scripts && \
     cat bashrc >> /root/.bashrc
 
 RUN apt-get update && \
-    apt-get install inotify-tools
+    apt-get install -y inotify-tools
