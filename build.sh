@@ -6,9 +6,7 @@ else
   echo Did not find Achlys Docker image.
   echo Building Achlys...
   
-  git clone https://github.com/aurora-multiphysics/achlys.git
-  cd achlys
-  docker build -t achlys-ubuntu --build-arg compile_cores=4 --build-arg build_git_sha=master docker/achlys-ubuntu/
+  docker build -t achlys-ubuntu https://raw.githubusercontent.com/aurora-multiphysics/achlys/master/docker/achlys-ubuntu/Dockerfile
 fi
 echo Building Achlys-UQ...
   
