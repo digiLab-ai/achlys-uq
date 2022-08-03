@@ -1,8 +1,6 @@
 #!/bin/bash
 while inotifywait -e close_write desorp_input.log
 do
-  RUN=$(tail -n 1 desorp_input.log)
-  
   modify_input_file input.json implant_sub.i
   modify_input_file input.json resting_multi.i
   modify_input_file input.json desorp_multi.i
@@ -10,6 +8,8 @@ do
   achlys-opt -i desorp_multi.i >> /dev/null
 
   stack_outputs -o result.csv
+  
+  RUN=$(tail -n 1 desorp_input.log)
   
   mkdir results/$RUN
   cp input.json result.csv results/$RUN
