@@ -5,7 +5,7 @@ do
   modify_input_file input.json resting_multi.i
   modify_input_file input.json desorp_multi.i
 
-  achlys-opt --n-cores=8 -i desorp_multi.i >> /dev/null
+  achlys-opt --n-threads=8 -i desorp_multi.i >> /dev/null
 
   stack_outputs -o result.csv
   
