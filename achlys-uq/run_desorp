@@ -12,7 +12,7 @@ do
   RUN=$(tail -n 1 desorp_input.log)
   
   mkdir results/$RUN
-  cp input.json result.csv results/$RUN
+  mv input.json result.csv results/$RUN
   
   echo $RUN >> desorp_output.log
 done
