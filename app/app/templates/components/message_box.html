@@ -1,0 +1,77 @@
+<div
+    id="message_box"
+    class="alert mt-3"
+    style="display: none"
+    onclick="$(this).slideUp()"
+>
+    Message box
+</div>
+
+<script>
+    const MESSAGE_BOX_HIDE_DELAY = 5000;
+    var message_box_hide_timeout = null;
+
+    const show_info = (message) => {
+        clearTimeout(message_box_hide_timeout);
+
+        $("#message_box")
+            .removeClass("alert-success")
+            .removeClass("alert-warning")
+            .removeClass("alert-danger")
+            .addClass("alert-info")
+            .text(message)
+            .slideDown();
+
+        message_box_hide_timeout = setTimeout(() => {
+            $("#message_box").slideUp();
+        }, MESSAGE_BOX_HIDE_DELAY);
+    };
+
+    const show_success = (message) => {
+        clearTimeout(message_box_hide_timeout);
+
+        $("#message_box")
+            .removeClass("alert-info")
+            .removeClass("alert-warning")
+            .removeClass("alert-danger")
+            .addClass("alert-success")
+            .text(message)
+            .slideDown();
+
+        message_box_hide_timeout = setTimeout(() => {
+            $("#message_box").slideUp();
+        }, MESSAGE_BOX_HIDE_DELAY);
+    };
+
+    const show_warning = (message) => {
+        clearTimeout(message_box_hide_timeout);
+
+        $("#message_box")
+            .removeClass("alert-info")
+            .removeClass("alert-success")
+            .removeClass("alert-danger")
+            .addClass("alert-warning")
+            .text(message)
+            .slideDown();
+
+        message_box_hide_timeout = setTimeout(() => {
+            $("#message_box").slideUp();
+        }, MESSAGE_BOX_HIDE_DELAY);
+    };
+
+    const show_error = (message) => {
+        clearTimeout(message_box_hide_timeout);
+
+        $("#message_box")
+            .removeClass("alert-info")
+            .removeClass("alert-success")
+            .removeClass("alert-warning")
+            .addClass("alert-danger")
+            .text(message)
+            .slideDown();
+
+        message_box_hide_timeout = setTimeout(() => {
+            $("#message_box").slideUp();
+        }, MESSAGE_BOX_HIDE_DELAY);
+    };
+</script>

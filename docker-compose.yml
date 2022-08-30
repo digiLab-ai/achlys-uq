@@ -1,0 +1,25 @@
+version: "3.10"
+services:
+  mongo:
+    image: mongo:latest
+    container_name: achlys_uq_mongo_container
+    env_file:
+      - ./.env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      MAIN_DATABASE: ${MAIN_DATABASE}
+    volumes:
+      - ace_data_container:/data/db
+    ports:
+      - "27017:27017"
+  # app:
+  #   container_name: achlys_uq_app_container
+  #   env_file:
+  #     - ./.env
+  #   build: ./app
+  #   ports:
+  #     - 8000:8000
+
+volumes:
+  ace_data_container:

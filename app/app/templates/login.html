@@ -1,0 +1,72 @@
+{% extends "base.html" %} {% block content %}
+
+<div
+    class="d-flex align-items-center justify-content-center"
+    style="height: 100vh"
+>
+    <div class="container-fluid py-5" style="max-width: 300px">
+        <h1 class="display-5 fw-bold text-light" style="text-align: center">
+            Ace!
+        </h1>
+
+        <form id="login_form" action="/auth/token" method="post">
+            <div class="input-group mb-2">
+                <input
+                    id="username"
+                    name="username"
+                    type="text"
+                    class="form-control"
+                    placeholder="Username"
+                    aria-label="Username"
+                />
+            </div>
+            <div class="input-group mb-2">
+                <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    class="form-control"
+                    placeholder="Password"
+                    aria-label="Password"
+                />
+            </div>
+            <input type="submit" class="btn btn-outline-light" value="Submit" />
+        </form>
+
+        <div>{% include "components/message_box.html" %}</div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        sessionStorage.removeItem("token");
+
+        $("#login_form").submit(function (event) {
+            event.preventDefault();
+
+            const form = $(this);
+            const url = form.attr("action");
+
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: form.serialize(),
+                success: (data) => {
+                    if (data.access_token === undefined) {
+                        show_error("Error! Unable to generate valid token.");
+                        return;
+                    }
+
+                    sessionStorage.setItem("token", data.access_token);
+                    Client.go_to_homepage();
+                },
+                error: (error) => {
+                    message = JSON.parse(error.responseText)["detail"];
+                    show_error(message);
+                },
+            });
+        });
+    });
+</script>
+
+{% endblock %}

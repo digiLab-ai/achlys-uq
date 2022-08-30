@@ -1,0 +1,39 @@
+{% extends "base.html" %} {% block content %}
+
+<div id="wrapper" class="container">
+    <div
+        class="row d-flex align-items-center justify-content-center"
+        style="height: 100vh"
+    >
+        <div class="p-5 mb-4 bg-light rounded-3" style="max-width: 700px">
+            <div class="container-fluid py-5">
+                <h1 class="display-5 fw-bold" style="text-align: center">
+                    Hello, world!
+                </h1>
+                <hr />
+                <div class="btn-group-vertical" style="width: 100%">
+                    <a
+                        class="btn btn-primary btn-lg btn-block spaced"
+                        onclick="show_info('Hello, world!')"
+                        >Click me! <i class="bi bi-book-fill"></i>
+                    </a>
+                    <a
+                        class="btn btn-danger btn-lg btn-block spaced"
+                        onclick="Client.go_to_login()"
+                        >Log out <i class="bi bi-book-fill"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(() => {
+        if (sessionStorage.getItem("token") == null) {
+            Client.go_to_login();
+        }
+    });
+</script>
+
+{% endblock %}

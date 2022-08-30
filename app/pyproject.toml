@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "achlys_uq_app"
+version = "0.1.0"
+description = "Achlys-UQ-App"
+authors = ["digiLab"]
+
+[tool.poetry.dependencies]
+fastapi = "^0.78.0"
+fastapi-login = "^1.8.2"
+Jinja2 = "^3.1.2"
+python = "^3.8"
+uvicorn = "^0.18.2"
+
+[tool.poetry.dev-dependencies]
+black = "^22.6.0"
+flake8 = "^4.0.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
