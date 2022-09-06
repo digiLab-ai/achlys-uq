@@ -2,8 +2,6 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from scipy.linalg import sqrtm
-
 from twinLab import *
 
 from bokeh.layouts import column, row
@@ -22,22 +20,14 @@ n_samples = parameters.shape[0]
 #grid, samples_grid = grid_projection.project(model_output)
 
 grid = np.loadtxt('grid.csv')
-samples_grid = np.loadtxt('samples_grid.csv')
 
-normaliser = Normaliser(samples_grid)
-samples_grid_normalised = normaliser.transform()
-
-projection = SVDProjection().load('svd_projection.p')
-theta, residuals = projection.project(samples_grid_normalised)
-
-model = IndependentMultiGPModel(parameters.values, theta, run_setup=False)
-model.load_state_dict('multi_gp.p')
-
-pipeline = Pipeline(output_modules=[model, projection, normaliser])
+pipeline = Pipeline.load('pipeline.pickle')
 
 bounds = np.array([(0.7, 1.0), (0.9, 1.3), (1.1, 1.75), (5e-4, 5e-3), (1e-4, 1e-3)])
 default_parameters = bounds.mean(axis=1)
-mean, stdev = pipeline.predict(default_parameters)
+
+mean, stdev = pipeline.predict(default_parameters[np.newaxis,:])
+mean = mean.flatten(); stdev = stdev.flatten()
 
 source = ColumnDataSource(data=dict(grid=grid, mean=mean, lower=mean-1.96*stdev, upper=mean+1.96*stdev))
 
@@ -61,8 +51,9 @@ def callback(attr, old, new):
     n1 = n1_slider.value
     n2 = n2_slider.value
     
-    parameters = np.array([E1, E2, E3, n1, n2])
+    parameters = np.array([[E1, E2, E3, n1, n2]])
     mean, stdev = pipeline.predict(parameters)
+    mean = mean.flatten(); stdev = stdev.flatten()
     
     source.data = {'grid': grid, 'mean': mean, 'lower': mean - 1.96*stdev, 'upper': mean + 1.96*stdev}
 
