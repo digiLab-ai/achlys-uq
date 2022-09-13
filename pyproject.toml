@@ -11,7 +11,7 @@ numpy = "^1.23.3"
 pandas = "^1.4.4"
 python = ">=3.8,<3.12"
 sklearn = "^0.0"
-twinlab = { path="../twinlab" } # Local copy of twinlab
+twinlab = { path="../twinLab" } # Local copy of twinlab
 
 [tool.poetry.dev-dependencies]
 black = "^22.6.0"
