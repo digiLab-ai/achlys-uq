@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "achlys_uq"
+version = "0.1.0"
+description = "Achlys-UQ Experiment"
+authors = ["Freddy Wordingham", "Mikkel Lykkegaard", "Tim Dodwell"]
+
+[tool.poetry.dependencies]
+gpytorch = "^1.9.0"
+matplotlib = "^3.5.3"
+numpy = "^1.23.3"
+python = ">=3.8,<3.12"
+sklearn = "^0.0"
+
+[tool.poetry.dev-dependencies]
+black = "^22.6.0"
+flake8 = "^4.0.1"
+jupyter = "^1.0.0"
+pytest = "^7.1.2"
+pytest-cov = "^3.0.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
