@@ -29,6 +29,13 @@ You can then run the notebooks via:
 poetry run jupyter notebook
 ```
 
+After you've trained a surrogate, run the `Bokeh` app from the `achlys-uq/surrogate` directory:
+
+```shell
+cd achlys-uq/surrogate
+poetry run python surrogate.py
+```
+
 ## Installation
 
 Run the build script `build.sh`.

@@ -12,6 +12,7 @@ pandas = "^1.4.4"
 python = ">=3.8,<3.12"
 sklearn = "^0.0"
 twinlab = { path="../twinLab" } # Local copy of twinlab
+bokeh = "^2.4.3"
 
 [tool.poetry.dev-dependencies]
 black = "^22.6.0"
