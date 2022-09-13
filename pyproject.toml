@@ -8,6 +8,7 @@ authors = ["Freddy Wordingham", "Mikkel Lykkegaard", "Tim Dodwell"]
 gpytorch = "^1.9.0"
 matplotlib = "^3.5.3"
 numpy = "^1.23.3"
+pandas = "^1.4.4"
 python = ">=3.8,<3.12"
 sklearn = "^0.0"
 
