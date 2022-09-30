@@ -1,0 +1,10 @@
+#!/bin/bash
+ACHLYS_PATH=/opt/achlys/problems/thermal_desorption/ogorodnikova/tds_multiapp
+modify_input_file input.json $ACHLYS_PATH/implant_sub.i
+modify_input_file input.json $ACHLYS_PATH/resting_multi.i
+modify_input_file input.json $ACHLYS_PATH/desorp_multi.i
+
+achlys-opt --n-threads=8 -i $ACHLYS_PATH/desorp_multi.i >> /dev/null
+
+#stack_outputs -o result.csv
+
